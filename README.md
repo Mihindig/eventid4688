@@ -1,18 +1,16 @@
-Got it! Here's a cleaned-up version while keeping your natural tone intact:  
-
----
-
 # **How to Properly Log Process Creation with Event ID 4688**  
 
 ### **Why Even Bother with This?**  
-Let’s be real—event logs can be a mess. There’s way too much data, and no one expects you to memorize every event ID. But what if you could track most of the important stuff with just **one** event ID? That’s where **Event ID 4688** in the **Security** event logs comes in.  
+Let’s be real event logs can be a mess. There’s way too much data, and no one expects you to memorize every event ID. But what if you could track most of the important stuff with just **one** event ID? That’s where **Event ID 4688** in the **Security** event logs comes in.  
 
-Most orgs don’t configure their event logging properly—they just roll with the default settings, which kinda sucks. Luckily, **Event ID 4688** captures a lot of **useful security data**, like:  
+Most orgs don’t configure their event logging properly,they just roll with the default settings, which kinda sucks. Luckily, **Event ID 4688** captures a lot of **useful security data**, like:  
 **Parent Process** (what started it)  
 **Child Process** (what was created)  
-**Command-line arguments** (if configured)  
+**Command line arguments** (if configured)  
 
-Yeah, it can be **super noisy**, but if you configure it right, it becomes a **solid tool for process tracking**. If you already have **Sysmon** or an **EDR solution**, you don’t **need** to do this—but hey, it’s fun to play around with.  
+Yeah, it can be **super noisy**, but if you configure it right, it becomes a **solid tool for process tracking**. If you already have **Sysmon** or an **EDR solution**, you don’t **need** to do this—but hey, it’s fun to play around with. 
+
+Make sure you read until the end,scroll down until the screenshots are gone so you'll be presented with a valuable website!
 
 ---
 
@@ -28,8 +26,8 @@ Now, let’s turn on logging for process creation:
    **Computer Configuration** → **Windows Settings** → **Security Settings** → **Advanced Audit Policy Configuration** → **System Audit Policies** → **Detailed Tracking**  
 3️.Find **Audit Process Creation** → Click **Configure the following audit events**.  
 4️.Check **both**:  
-   - **Success** ✅ (logs successful process creation)  
-   - **Failure** ❌ (logs failed attempts)  
+   - **Success**  (logs successful process creation)  
+   - **Failure**  (logs failed attempts)  
 5️.Click **Apply** and **OK**.  
 
 ### **Step 3: Enable Command-Line Logging**  
@@ -71,3 +69,24 @@ Yeah, it can be noisy, but **with proper filtering**, it becomes an extremely va
 
 Now go test it out and see what’s happening on your system! 
 
+# Screenshot
+
+### 1. Open Group policy and configuring audit process creation (in my case i only checked success since i am not in my production)
+   ![5](https://github.com/Mihindig/eventidpics/blob/main/4.png)
+   ![6](https://github.com/Mihindig/eventidpics/blob/main/5.png)
+
+### 2. Configuring process creation events
+   ![7](https://github.com/Mihindig/eventidpics/blob/main/6.png)
+   ![8](https://github.com/Mihindig/eventidpics/blob/main/7.png)
+
+### 3. Running powershell commands
+   ![9](https://github.com/Mihindig/eventidpics/blob/main/8.png)
+
+### 4. Checking security logs
+   ![10](https://github.com/Mihindig/eventidpics/blob/main/9.png)
+   ![11](https://github.com/Mihindig/eventidpics/blob/main/10.png) 
+
+ ---
+   Also,If you playing around with home labs and want to get used with frequent event IDs,then i highly recommend referring to the below website where it helps you in every possible way!
+
+  # https://www.ultimatewindowssecurity.com/
